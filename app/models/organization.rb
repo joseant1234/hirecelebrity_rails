@@ -1,5 +1,6 @@
 class Organization < ApplicationRecord
-  has_many :organization_categories
+  
+  has_many :organization_categories, dependent: :destroy
   has_many :celebrities, through: :organization_categories
 
   accepts_nested_attributes_for :organization_categories, allow_destroy: true

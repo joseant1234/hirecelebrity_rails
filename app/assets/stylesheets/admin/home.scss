@@ -5,3 +5,67 @@ html, body {
   height: 100vh;
   overflow: hidden;
 }
+
+.unregistered {
+  background-color: #5900d0;
+  height: 100%;
+}
+
+.custom-color {
+  background-color: #5900d0;
+}
+
+.custom-color-text {
+  color: #5900d0 !important;
+}
+
+.indicator {
+  background-color: #5900d0 !important;
+}
+
+.color-state {
+  width: 30px;
+  height: 8px;
+  display: inline-block;
+}
+
+.pagination li.active a {
+  color: #fff;
+}
+
+.pretty th .asc:after {
+  content: "\E316";
+  font-family: "Material Icons";
+}
+
+.pretty th .desc:after {
+  content: "\E313";
+  font-family: "Material Icons";
+}
+
+.breadcrumb.black-text:before {
+  color: #000;
+}
+
+.breadcrumb.blue-text:before {
+  color: #2196F3;
+}
+
+table th, td {
+  border: 4px solid #2E0854!important;
+}
+
+table thead{
+  background-color: #5900d0;
+  color: white;
+  a{
+    color: #ff9800;  
+  }
+}
+
+.new-button {
+  bottom: 24px;
+  right: 24px;
+}
+
+

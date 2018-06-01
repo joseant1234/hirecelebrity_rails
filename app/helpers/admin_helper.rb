@@ -42,5 +42,14 @@ module AdminHelper
       end
     end
   end
+
+  def link_to_active(object)
+    content_tag(:a, href: '#', 
+      'data-url': Rails.application.routes.url_helpers.send("status_admin_#{object.class.name.underscore}_path",id: object.id),
+      'data-confirmation-text': object.try(:name) || object.title, 'data-option-method': 'put', 'data-option-text': 'active',
+      class: 'open-modal-confirmation black-text') do
+      content_tag(:i,'rotate_left', class: 'material-icons')
+    end
+  end
   
 end

@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title Celebrity Speakers
+    %title Hire Celebrities
     = csrf_meta_tags
     = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
@@ -16,7 +16,7 @@
         %nav.white
           .nav-wrapper
             = image_tag 'star.png', class: 'logo'
-            = link_to 'Celebrity Speakers', admin_root_path, class: 'black-text text-logo'
+            = link_to 'Hire Celebrities', admin_root_path, class: 'black-text text-logo'
             %ul.right.hide-on-med-and-down
               %li
                 = link_to destroy_admin_session_path, method: :delete, class: 'black-text' do

@@ -1,26 +1,47 @@
-<h2>Log in</h2>
+<div class="row unregistered no-margin">
+  <div class="col m6 s12 offset-m3">
+    <h1 class="white-text center top-space upper bold">Hire Celebrities</h1>
+    <div class="card top-space">
+      <div class="center big-padding">
+        <span class="bold medium">Account</span>
+      </div>
+      <div class="card-content">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <% if !flash.blank? %>
+          <div class="row">
+            <div class="col s12">
+              <% flash.each do |key, value| %>
+                <div class= "flash_#{key} red-text">
+                  <%= value %>      
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="row top-space">
+            <div class="input-field col s12">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+              <%= f.label :email %>
+            </div>
+          </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "off", required: true %>
+            </div>
+          </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="actions">
+            <%= f.submit "Sign in", class: 'btn deep-purple accent-4 full-width' %>
+          </div>
+          <div class="top-space">
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+</div>
