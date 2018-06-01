@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title Celebrity Speakers
+    = csrf_meta_tags
+    = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+  
+  %body
+    #notice{style: 'display: none'}= flash[:notice]
+    
+    - if admin_signed_in?
+      .navbar-fixed
+        %nav.white
+          .nav-wrapper
+            = image_tag 'star.png', class: 'logo'
+            = link_to 'Celebrity Speakers', admin_root_path, class: 'black-text text-logo'
+            %ul.right.hide-on-med-and-down
+              %li
+                = link_to destroy_admin_session_path, method: :delete, class: 'black-text' do
+                  Logout
+                  %i.material-icons.right input
+                 
+      .row.no-margin.full-height
+        .col.s3.m2.no-padding.full-height.custom-color
+          .collection.no-margin.custom-color#options
+            
+            = li_paint_slider 'CELEBRITIES', admin_celebrities_path, 'celebrities'
+
+        .col.s9.m10.no-padding.full-height#main
+          = yield
+          %div{style: "height: 4.5em"}
+    - else
+      = yield

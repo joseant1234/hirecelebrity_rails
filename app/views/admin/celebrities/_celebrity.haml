@@ -1,0 +1,18 @@
+%tr{id: "#{dom_id celebrity}", class: "#{color_tr(celebrity)}"}
+  %td= celebrity.name
+  %td= celebrity.last_name
+  %td= celebrity.featured.humanize
+  %td= celebrity.popular.humanize
+  %td= fee_range(celebrity)
+  %td
+    = link_to admin_celebrity_path(celebrity), class: 'black-text' do
+      %i.material-icons visibility
+    %span &nbsp;
+    = link_to edit_admin_celebrity_path(celebrity), class: 'black-text' do
+      %i.material-icons edit
+    %span &nbsp;
+    = link_status(celebrity)
+
+
+          
+

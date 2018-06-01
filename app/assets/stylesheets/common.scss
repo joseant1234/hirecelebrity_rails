@@ -1,0 +1,124 @@
+@import 'materialize';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+/* ALIGN */
+.center {
+  text-align: center
+}
+.right-text{
+  text-align: right;
+}
+
+/* WIDTH AND HEIGHT*/
+.full-width {
+  width: 100%;
+}
+.full-height {
+  height: 100%;
+}
+
+
+/* MARGIN */
+.top-space {
+  margin-top: 1em;
+}
+.small-top-space{
+  margin-top: 1.1em;
+}
+.little-top-space{
+  margin-top: 0.6em;
+}
+.left-space{
+  margin-left: 1em;
+}
+.little-left-space{
+  margin-left: 0.3em;
+}
+.no-margin {
+  margin: 0px;
+}
+
+/* PADDING */
+.large-padding {
+  padding: 5px 10px;
+}
+.big-padding {
+  padding: 2em;
+}
+
+.small-padding {
+  padding: 1em;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+/* Display */
+.hidden {
+  display: none;
+}
+.inline-block {
+  display: inline-block
+}
+
+/* Position */
+.relative {
+  position: relative;
+}
+.fixed {
+  position: fixed;
+}
+.absolute {
+  position: absolute;
+}
+.static {
+  position: static;
+}
+.top {
+  top: 0px;
+}
+.left {
+  left: 0px;
+}
+.bottom {
+  bottom: 0px;
+}
+.right {
+  right: 0px;
+}
+
+/* TEXT */
+.bold {
+  font-weight: bold;
+}
+.big {
+  font-size: 3em;
+}
+.medium {
+  font-size: 1.5em;
+}
+.small {
+  font-size: 1.7rem;
+}
+.upper {
+  text-transform: uppercase;
+}
+
+ /* Borders */
+.border-collection {
+  border-bottom: 4px solid #2E0854!important;
+}
+.border-space{
+ border: 2px solid #2E0854!important;
+}
+
+/* Hidden */
+.overflow-x{
+  overflow-x: auto;
+}
+
+/* Cursor */
+.pointer{
+  cursor: pointer;
+}

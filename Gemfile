@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.4.4"
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -32,6 +32,20 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'aasm'
+gem 'awesome_print'
+gem 'devise'
+gem 'figaro'
+gem "haml-rails", "~> 1.0"
+gem 'humanize_boolean'
+gem 'jquery-rails'
+gem 'letter_opener', :group => :development
+gem 'materialize-sass', '~> 0.100.2'
+gem "nested_form"
+gem 'pg', '0.21.0'
+gem "paperclip", "~> 6.0.0"
+gem "seedbank"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
