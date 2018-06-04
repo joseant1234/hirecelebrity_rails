@@ -1,0 +1,107 @@
+= nested_form_for [:admin,@celebrity], multipart: true, remote: true do |f|
+
+  #errors.red-text.center.bold.hidden An error occured
+
+  .row.top-space
+    .input-field.col.s12.m4
+      = f.text_field :name, 'data-length': '50'
+      = f.label :name
+      %small.red-text#name_error
+    .input-field.col.s12.m4
+      = f.text_field :last_name, 'data-length': '50'
+      = f.label :last_name
+      %small.red-text#last_name_error
+    .col.s12.m4
+      %a{href: wikipedia_admin_celebrities_path, class: 'btn orange send-wikipedia', style: "margin-top: 1.5em"}
+        %i.material-icons search
+
+  .row
+    .input-field.col.s12
+      = f.text_area :biography, class: 'materialize-textarea count-textarea', 'data-length': '2000'
+      = f.label :biography, 'Biography (from wikipedia)'
+      %small.red-text#biography_error
+  .row
+    .col.s12
+      = label_tag :image, 'Image'
+  .row
+    .col.s12
+      %ul.tabs
+        %li.tab.col.s6
+          %a{href: "#url", class: 'custom-color-text bold'} Paste URL
+        %li.tab.col.s6
+          %a{href: "#upload", class: 'custom-color-text bold'} Upload File
+
+    #url.col.s12
+      .top-space
+        .input-field
+          = f.text_field :image_url
+          = f.label :image_url, 'Image URL', class: 'active'
+          %small.red-text#image_url_error
+
+    #upload.col.s12
+      .row
+        .col.s12.no-padding
+          - if @celebrity.photo.present?
+            = image_tag @celebrity.photo.url, class: 'image_to_upload top-space', height: 300, width: 300
+            = f.check_box :delete_photo, class: 'hidden'
+            %a{href: "#", class: 'red-text delete-image'}
+              %i.material-icons.small delete
+          - else
+            %img{src: '',class: 'hidden image_to_upload top-space' }
+
+      .col.s12.m5.no-padding
+        .file-field.input-field
+          .btn.deep-purple.accent-4
+            %span Photo
+            = f.file_field :photo, class: 'photo_upload'
+          .file-path-wrapper
+            %input{type: 'text', class: 'file-path validate', value: @celebrity.photo.original_filename}
+
+  .row
+    .col.s12.m2
+      = f.check_box :featured
+      = f.label :featured, 'Show as Featured'
+    .col.s12.m2
+      = f.check_box :popular
+      = f.label :popular, 'Show as Popular'
+
+  .row
+    .col.s12
+      = label_tag :categories, 'Categories'
+      = f.link_to_add :celebrity_categories, class: 'deep-purple-text text-accent-4' ,:data => { :target => "#celebrity_categories" } do
+        %i.material-icons{style: "vertical-align: middle"} add
+      %p.no-margin
+        %small.red-text#celebrity_categories_error
+        %small.red-text#base_error
+    .col.s12#celebrity_categories
+      = f.fields_for :celebrity_categories do |sc_form|
+        .row
+          .col.s10.m5.no-padding
+            = sc_form.select :category_id, options_from_collection_for_select(@categories,'id','name',sc_form.object.category_id)
+          .col.s2.m2.little-top-space
+            = sc_form.link_to_remove class: 'red-text left' do
+              %i.material-icons.small delete
+
+  .row
+    .input-field.col.s12.m4
+      = f.select :fee_range, options_for_select(Celebrity::FEE_RANGES,"#{fee_range(@celebrity)}"), prompt: "Choose an option"
+      = f.label :fee_range
+      %small.red-text#fee_min_error
+    .input-field.col.s12.m4
+      = f.select :state_id, options_from_collection_for_select(@states,'id','name',@celebrity.state_id), prompt: "Choose an option"
+      = f.label :state_id
+      %small.red-text#state_error
+    .input-field.col.s12.m4
+      = f.select :organization_id, options_from_collection_for_select(@organizations,'id','name',@celebrity.organization_id), :include_blank => "Choose an option"
+      = f.label :organization_id
+
+  .row
+    .input-field.col.s12
+      = f.text_area :mini_description, class: 'materialize-textarea count-textarea', 'data-length': '60'
+      = f.label :mini_description, 'About'
+      %small.red-text#mini_description_error
+  .row
+    .input-field.col.s12
+      = f.text_area :disclaimer, class: 'materialize-textarea count-textarea', 'data-length': '500'
+      = f.label :disclaimer, 'Disclaimer'
+      %small.red-text#disclaimer_error

@@ -1,5 +1,7 @@
 class Celebrity < ApplicationRecord
 
+  include SortableConcern
+
   belongs_to :state
   belongs_to :organization, optional: true
   has_many :celebrity_categories

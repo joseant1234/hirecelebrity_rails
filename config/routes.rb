@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
   	root 'celebrities#index'
   	resources :celebrities do
+      get 'wikipedia', on: :collection
       put 'status', on: :member
     end
   end

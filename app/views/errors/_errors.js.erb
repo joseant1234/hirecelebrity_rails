@@ -1,0 +1,7 @@
+$('#errors').removeClass('hidden')
+$("small[id*='_error']").html('')
+$("input, textarea").removeClass('invalid')
+<% resource.errors.keys.each do |key| %>
+  $("#<%= key %>_error").html("<%= j resource.errors.full_messages_for(key).to_sentence %>").siblings('input,textarea').addClass('invalid')
+<% end %>
+$("#base_error").html("<%= j resource.errors[:base].to_sentence %>")
