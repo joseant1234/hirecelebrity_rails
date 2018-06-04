@@ -1,0 +1,42 @@
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Services',admin_services_path, class: "breadcrumb blue-text"
+            = link_to @service.name,admin_service_path(@service), class: "breadcrumb blue-text"
+            = link_to 'VIEW','', class: "breadcrumb black-text"
+
+    .row
+      .col.s12.m4
+        %span.bold Image
+      .col.s12.m8
+        = print_zoom_image(@service.portrait)
+
+    .row
+      .col.s12.m4
+        %span.bold Name
+      .col.s12.m8
+        %span= @service.name
+    .row
+      .col.s12.m4
+        %span.bold Description
+      .col.s12.m8
+        %span{style: "white-space: pre-line"}= @service.description
+    .row
+      .col.s12.m4
+        %span.bold Category
+      .col.s12.m8
+        %span= @service.categories.sort_by(&:name).map(&:name).join(', ').html_safe
+    .row
+      .col.s12.m4
+        %span.bold Featured
+      .col.s12.m8
+        %span= @service.featured.humanize
+
+
+
+
+        

@@ -1,0 +1,74 @@
+= nested_form_for [:admin,@service], multipart: true, remote: true do |f|
+
+  #errors.red-text.center.bold.hidden An error occured
+
+  .row.top-space
+    .input-field.col.s8.m4
+      = f.text_field :name, 'data-length': '50'
+      = f.label :name
+      %small.red-text#name_error
+
+  .row
+    .input-field.col.s12
+      = f.text_area :description, class: 'materialize-textarea count-textarea', 'data-length': '1000'
+      = f.label :description, 'Description'
+      %small.red-text#description_error
+
+  .row
+    .col.s12
+      = label_tag :image, 'Image'
+  .row
+    .col.s12
+      %ul.tabs
+        %li.tab.col.s6
+          %a{href: "#url", class: 'custom-color-text bold'} Paste URL
+        %li.tab.col.s6
+          %a{href: "#upload", class: 'custom-color-text bold'} Upload File
+
+    #url.col.s12
+      .top-space
+        .input-field
+          = f.text_field :image_url
+          = f.label :image_url, 'Image URL', class: 'active'
+          %small.red-text#image_url_error
+
+    #upload.col.s12
+      .row
+        .col.s12.no-padding
+          - if @service.photo.present?
+            = image_tag @service.photo.url, class: 'image_to_upload top-space', height: 300, width: 300
+            = f.check_box :delete_photo, class: 'hidden'
+            %a{href: "#", class: 'red-text delete-image'}
+              %i.material-icons.small delete
+          - else
+            %img{src: '',class: 'hidden image_to_upload top-space' }
+
+      .col.s12.m5.no-padding
+        .file-field.input-field
+          .btn.deep-purple.accent-4
+            %span Photo
+            = f.file_field :photo, class: 'photo_upload'
+          .file-path-wrapper
+            %input{type: 'text', class: 'file-path validate', value: @service.photo.original_filename}
+
+  .row
+    .col.s12.m2
+      = f.check_box :featured
+      = f.label :featured, 'Featured'
+
+  .row
+    .col.s12
+      = label_tag :categories, 'Categories'
+      = f.link_to_add :service_categories, class: 'deep-purple-text text-accent-4' ,:data => { :target => "#service_categories" } do
+        %i.material-icons{style: "vertical-align: middle"} add
+      %p.no-margin
+        %small.red-text#service_categories_error
+        %small.red-text#base_error
+    .col.s12#service_categories
+      = f.fields_for :service_categories do |sc_form|
+        .row
+          .col.s10.m6.no-padding
+            = sc_form.select :category_id, options_from_collection_for_select(@categories,'id','name',sc_form.object.category_id)
+          .col.s2.m2.little-top-space
+            = sc_form.link_to_remove class: 'red-text left' do
+              %i.material-icons.small delete

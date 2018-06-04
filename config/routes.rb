@@ -16,5 +16,8 @@ Rails.application.routes.draw do
       put 'status', on: :member
       resources :testimonials, shallow: true
     end
+    resources :services, except: :destroy do
+      put 'status', on: :member
+    end
   end
 end

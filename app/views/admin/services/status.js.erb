@@ -1,0 +1,3 @@
+$("#<%= dom_id @service %>").replaceWith("<%= j render partial: 'service', locals: {service: @service} %>")
+$("#modalConfirmation").modal('close')
+Materialize.toast("Successfully <%= @service.status %>d", 4000)
