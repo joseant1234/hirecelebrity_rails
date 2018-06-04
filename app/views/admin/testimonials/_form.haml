@@ -1,0 +1,14 @@
+= nested_form_for [:admin,@celebrity_or_client,@testimonial], multipart: true, remote: true do |f|
+
+  #errors.red-text.center.bold.hidden An error occured
+
+  .row
+    .input-field.col.s12
+      = f.text_area :description, class: 'materialize-textarea','data-length': '500'
+      = f.label :description
+      %small.red-text#description_error
+
+  .row
+    .col.s12.m2
+      = f.check_box :featured
+      = f.label :featured, 'Featured'

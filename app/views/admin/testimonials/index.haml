@@ -1,0 +1,30 @@
+.fixed-action-btn.new-button
+  = link_new_testimonial @celebrity_or_client
+
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            - if @celebrity_or_client.class.name == 'Celebrity'
+              = link_to 'Celebrities',admin_celebrities_path, class: "breadcrumb blue-text"
+              = link_to @celebrity_or_client.name,admin_celebrity_path(@celebrity_or_client), class: "breadcrumb blue-text"
+            - else
+              = link_to 'Clients',admin_clients_path, class: "breadcrumb blue-text"
+              = link_to @celebrity_or_client.name,admin_client_path(@celebrity_or_client), class: "breadcrumb blue-text"
+            = link_to 'Testimonials','', class: "breadcrumb black-text"
+
+    .overflow-x
+      %table.centered
+        %thead#table_header
+          = render 'table_header'
+        %tbody#testimonials_index
+          = render @testimonials
+
+    .top-space.center.pagination-from-table
+      = will_paginate @testimonials, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer
+
+
+= render 'admin/shareds/modal_confirmation'

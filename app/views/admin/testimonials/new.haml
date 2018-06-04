@@ -1,0 +1,23 @@
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12.m10
+            - if @celebrity_or_client.class.name == 'Celebrity'
+              = link_to 'Celebrities',admin_celebrities_path, class: "breadcrumb blue-text"
+              = link_to @celebrity_or_client.name,admin_celebrity_path(@celebrity_or_client), class: "breadcrumb blue-text"
+              = link_to 'Testimonials',admin_celebrity_testimonials_path(@celebrity_or_client), class: "breadcrumb blue-text"
+              = link_to 'ADD',new_admin_celebrity_testimonial_path(@celebrity_or_client), class: "breadcrumb black-text"
+            - else
+              = link_to 'Clients',admin_clients_path, class: "breadcrumb blue-text"
+              = link_to @celebrity_or_client.name,admin_client_path(@celebrity_or_client), class: "breadcrumb blue-text"
+              = link_to 'Testimonials',admin_client_testimonials_path(@celebrity_or_client), class: "breadcrumb blue-text"
+              = link_to 'ADD',new_admin_client_testimonial_path(@celebrity_or_client), class: "breadcrumb black-text"
+          .col.s12.m2.right-text
+            = submit_tag 'Save', "data-disable-with": "Saving ...", class: 'deep-purple accent-4 btn', form: 'new_testimonial'
+
+    .row
+      .col.s12
+        = render 'form'

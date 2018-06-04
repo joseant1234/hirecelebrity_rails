@@ -11,3 +11,7 @@
       %i.material-icons edit
     %span &nbsp;
     = link_status client
+    %a.dropdown-button.black-text{"data-activates": "dropdown_actions_#{client.id}","data-alignment": "left"}
+      %i.material-icons more_vert
+    %ul.dropdown-content{id: "dropdown_actions_#{client.id}"}
+      %li= link_to 'Testimonials', admin_client_testimonials_path(client)

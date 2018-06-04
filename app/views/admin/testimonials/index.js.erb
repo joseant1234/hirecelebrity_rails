@@ -1,0 +1,2 @@
+$("#testimonials_index").html("<%= j render partial: 'testimonial', collection: @testimonials, as: :testimonial %>")
+$('.pagination-from-table').html('<%= j will_paginate @testimonials, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')

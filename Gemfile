@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'aasm'
 gem 'awesome_print'
 gem 'devise'
+gem 'draper'
 gem 'figaro'
 gem "haml-rails", "~> 1.0"
 gem 'humanize_boolean'

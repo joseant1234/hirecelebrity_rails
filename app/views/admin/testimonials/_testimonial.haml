@@ -1,0 +1,4 @@
+%tr{id: "#{dom_id testimonial}"}
+  %td= testimonial.description.truncate(87)
+  %td= testimonial.featured.humanize
+  %td= testimonial.options(@celebrity_or_client)

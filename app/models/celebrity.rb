@@ -4,8 +4,9 @@ class Celebrity < ApplicationRecord
 
   belongs_to :state
   belongs_to :organization, optional: true
-  has_many :celebrity_categories
+  has_many :celebrity_categories, dependent: :destroy
   has_many :categories, through: :celebrity_categories
+  has_many :testimonials, as: :resource, dependent: :destroy
 
   enum status: [:active, :desactive]
 

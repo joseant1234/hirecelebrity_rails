@@ -4,15 +4,17 @@ Rails.application.routes.draw do
 
   namespace :admin do
   	root 'celebrities#index'
-  	resources :celebrities do
+  	resources :celebrities, except: :destroy  do
       get 'wikipedia', on: :collection
       put 'status', on: :member
+      resources :testimonials, shallow: true
     end
-    resources :organizations do
+    resources :organizations, except: :destroy  do
       put 'status', on: :member
     end
     resources :clients, except: :destroy do
       put 'status', on: :member
+      resources :testimonials, shallow: true
     end
   end
 end

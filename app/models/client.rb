@@ -3,6 +3,7 @@ class Client < ApplicationRecord
 
   has_many :client_categories, dependent: :destroy
   has_many :categories, through: :client_categories
+  has_many :testimonials, as: :resource, dependent: :destroy
 
   enum status: [:active, :desactive]
 
