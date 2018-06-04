@@ -1,0 +1,5 @@
+.modal#modalConfirmation
+  .modal-content{style: "text-align: center;"}
+    %p.confirmation-text'
+    = link_to 'Yes', '', method: :delete, remote: true, class: 'btn red'
+    %button{type: 'button', class: 'btn blue modal-action modal-close'} Nos

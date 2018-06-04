@@ -10,20 +10,22 @@
         .input-field.col.s12.no-padding.search-input
           %i.material-icons.prefix search
           = text_field_tag :term, params[:term]
-          = label_tag :term, 'Search by name or last name or team'
+          = label_tag :term, 'Search by name or last name or category or team'
       .row
         .col.s12.no-padding
           = button_tag :submit, "data-disable-with": "Searching ...", class: 'btn deep-purple accent-4 right' do
             Search
-            
+
     = print_color_status
-    
+
     .overflow-x
       %table.centered
         %thead#table_header
-          = render 'table_header'    
+          = render 'table_header'
         %tbody#celebrities_index
           = render @celebrities
-      
+
     .top-space.center.pagination-from-table
       = will_paginate @celebrities, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer
+
+= render 'admin/shareds/modal_confirmation'

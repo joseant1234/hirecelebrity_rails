@@ -1,0 +1,4 @@
+$("#celebrity_biography").val("<%= j @wikipedia_biography.presence %>")
+$(".send-wikipedia").removeClass('disabled')
+Materialize.updateTextFields()
+$('#celebrity_biography').trigger('autoresize')

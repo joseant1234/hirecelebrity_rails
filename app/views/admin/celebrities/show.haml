@@ -1,0 +1,66 @@
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Celebrities',admin_celebrities_path, class: "breadcrumb blue-text"
+            = link_to @celebrity.name,admin_celebrity_path(@celebrity), class: "breadcrumb blue-text"
+            = link_to 'VIEW','', class: "breadcrumb black-text"
+
+    .row
+      .col.s12.m4
+        %span.bold Image
+      .col.s12.m4
+        = print_zoom_image(@celebrity.portrait)
+    .row
+      .col.s12.m4
+        %span.bold Name
+      .col.s12.m8
+        %span= @celebrity.name
+    .row
+      .col.s12.m4
+        %span.bold Last name
+      .col.s12.m8
+        %span= @celebrity.last_name.presence || '-'
+    .row
+      .col.s12.m4
+        %span.bold Team
+      .col.s12.m8
+        %span= @celebrity.organization.try(:name)
+    .row
+      .col.s12.m4
+        %span.bold Category
+      .col.s12.m8
+        %span= @celebrity.categories.sort_by(&:name).map(&:name).join(', ').html_safe
+    .row
+      .col.s12.m4
+        %span.bold Fee range
+      .col.s12.m8
+        %span= fee_range(@celebrity)
+    .row
+      .col.s12.m4
+        %span.bold Featured
+      .col.s12.m8
+        %span= @celebrity.featured.humanize
+    .row
+      .col.s12.m4
+        %span.bold Popular
+      .col.s12.m8
+        %span= @celebrity.popular.humanize
+    .row
+      .col.s12.m4
+        %span.bold About
+      .col.s12.m8
+        %span.multiple-line= @celebrity.mini_description
+    .row
+      .col.s12.m4
+        %span.bold Biography
+      .col.s12.m8
+        %span.multiple-line= @celebrity.biography
+    .row
+      .col.s12.m4
+        %span.bold Disclaimer
+      .col.s12.m8
+        %span.multiple-line= @celebrity.disclaimer

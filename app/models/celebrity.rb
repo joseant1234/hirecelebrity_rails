@@ -1,6 +1,6 @@
 class Celebrity < ApplicationRecord
 
-  include SortableConcern
+  include SortableConcern, PictureConcern
 
   belongs_to :state
   belongs_to :organization, optional: true
@@ -14,8 +14,18 @@ class Celebrity < ApplicationRecord
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/default.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 
+  validates_presence_of :name, :last_name, :biography, :fee_min, :mini_description, :disclaimer
+  validates :name, :last_name, length: { maximum: 50 }
+  validates :biography, length: { maximum: 2000}
+  validates :mini_description, length: { maximum: 60}
+  validates :image_url, url: { allow_blank: true }
+  validates :disclaimer, length: { maximum: 500}
+  validates :celebrity_categories, length: { minimum: 1 }
+  validate :validate_unique_celebrity_categories
+
   attr_accessor :delete_photo, :fee_range
 
+  before_validation { photo.clear if delete_photo == '1' }
   before_validation :set_fee_min_and_fee_max
 
   FEE_RANGES = ["$2,000 - $5,000","$5,000 - $10,000","$10,000 - $20,000","$20,000 - $30,000","$30,000 - $50,000","$50,000 - $100,000","$100,000 - $200,000","$200,000 +"].freeze
@@ -31,6 +41,10 @@ class Celebrity < ApplicationRecord
   # ---------- INSTANCE METHODS -----------------
   # ---------- END INSTANCE METHODS -------------
   private
+
+  def validate_unique_celebrity_categories
+    validate_uniqueness_of_in_memory(celebrity_categories, [:category_id, :celebrity_id], 'Duplicate categories')
+  end
 
   def set_fee_min_and_fee_max
     if self.fee_range.present?

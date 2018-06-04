@@ -1,6 +1,6 @@
 class Organization < ApplicationRecord
 
-  include SortableConcern
+  include SortableConcern, PictureConcern
 
   has_many :organization_categories, dependent: :destroy
   has_many :celebrities, through: :organization_categories

@@ -6,9 +6,10 @@
         .nav-wrapper
           .col.s12.m10
             = link_to 'Celebrities',admin_celebrities_path, class: "breadcrumb blue-text"
-            = link_to 'ADD',new_admin_celebrity_path, class: "breadcrumb black-text"
+            = link_to 'EDIT',edit_admin_celebrity_path(@celebrity), class: "breadcrumb black-text"
           .col.s12.m2.right-text
-            = submit_tag 'Save', "data-disable-with": "Saving ...", class: 'deep-purple accent-4 btn', form: "new_celebrity"
+            = submit_tag 'Save', "data-disable-with": "Saving ...", class: 'deep-purple accent-4 btn', form: "edit_celebrity_#{@celebrity.id}"
+
     .row
       .col.s12
         = render 'form'
