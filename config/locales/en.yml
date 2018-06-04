@@ -3,6 +3,8 @@ en:
     attributes:
       celebrity:
         celebrity_categories: 'Categories'
+      organization:
+        organization_categories: 'Categories'
 
     errors:
       models:
@@ -10,7 +12,6 @@ en:
           attributes:
             celebrity_categories:
               too_short: 'are too short (minimun is 1 category)'
-
         organization:
           attributes:
             organization_categories:

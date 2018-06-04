@@ -1,0 +1,37 @@
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Organizations',admin_organizations_path, class: "breadcrumb blue-text"
+            = link_to @organization.name,admin_organization_path(@organization), class: "breadcrumb blue-text"
+            = link_to 'VIEW','', class: "breadcrumb black-text"
+
+    .row
+      .col.s12.m4
+        %span.bold Image
+      .col.s12.m4
+        = print_zoom_image(@organization.portrait)
+    .row
+      .col.s12.m4
+        %span.bold Name
+      .col.s12.m8
+        %span= @organization.name
+    .row
+      .col.s12.m4
+        %span.bold Category
+      .col.s12.m8
+        %span= @organization.categories.sort_by(&:name).map(&:name).join(', ').html_safe
+
+    .row
+      .col.s12.m4
+        %span.bold Description
+      .col.s12.m8
+        %span.multiple-line= @organization.description
+    .row
+      .col.s12.m4
+        %span.bold Extract
+      .col.s12.m8
+        %span.multiple-line= @organization.extract

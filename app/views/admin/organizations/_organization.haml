@@ -1,0 +1,12 @@
+%tr{id: "#{dom_id organization}", class: "#{color_tr(organization)}"}
+  %td= organization.name
+  %td= organization.description.truncate(18).presence || '-'
+  %td= organization.extract.truncate(18).presence || '-'
+  %td
+    .two-lines= organization.categories.sort_by(&:name).map(&:name).join(', ').html_safe
+  %td
+    = link_to admin_organization_path(organization), class: 'black-text' do
+      %i.material-icons visibility
+    = link_to edit_admin_organization_path(organization), class: 'black-text' do
+      %i.material-icons edit
+    = link_status organization

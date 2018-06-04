@@ -1,0 +1,3 @@
+$("#organizations_index").html("<%= j render partial: 'organization', collection: @organizations, as: :organization %>")
+$('.pagination-from-table').html('<%= j will_paginate @organizations, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")

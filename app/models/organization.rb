@@ -3,7 +3,8 @@ class Organization < ApplicationRecord
   include SortableConcern, PictureConcern
 
   has_many :organization_categories, dependent: :destroy
-  has_many :celebrities, through: :organization_categories
+  has_many :categories, through: :organization_categories
+  has_many :celebrities
 
   enum status: [:active, :desactive]
 
@@ -17,6 +18,7 @@ class Organization < ApplicationRecord
   validates :extract, length: { maximum: 500 }
   validates :image_url, url: { allow_blank: true }
   validates :organization_categories, length: { minimum: 1 }
+  validate :validate_unique_organization_categories
 
   attr_accessor :delete_photo
 
@@ -34,7 +36,7 @@ class Organization < ApplicationRecord
 
   private
 
-  def validate_unique_team_categories
-    validate_uniqueness_of_in_memory(team_categories, [:category_id, :team_id], 'Duplicate categories')
+  def validate_unique_organization_categories
+    validate_uniqueness_of_in_memory(organization_categories, [:category_id, :organization_id], 'Duplicate categories')
   end
 end

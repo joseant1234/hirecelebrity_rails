@@ -8,5 +8,8 @@ Rails.application.routes.draw do
       get 'wikipedia', on: :collection
       put 'status', on: :member
     end
+    resources :organizations do
+      put 'status', on: :member
+    end
   end
 end

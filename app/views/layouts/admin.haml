@@ -7,10 +7,10 @@
     = csrf_meta_tags
     = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
-  
+
   %body
     #notice{style: 'display: none'}= flash[:notice]
-    
+
     - if admin_signed_in?
       .navbar-fixed
         %nav.white
@@ -22,12 +22,13 @@
                 = link_to destroy_admin_session_path, method: :delete, class: 'black-text' do
                   Logout
                   %i.material-icons.right input
-                 
+
       .row.no-margin.full-height
         .col.s3.m2.no-padding.full-height.custom-color
           .collection.no-margin.custom-color#options
-            
+
             = li_paint_slider 'CELEBRITIES', admin_celebrities_path, 'celebrities'
+            = li_paint_slider 'ORGANIZATIONS', admin_organizations_path, 'organizations'
 
         .col.s9.m10.no-padding.full-height#main
           = yield
