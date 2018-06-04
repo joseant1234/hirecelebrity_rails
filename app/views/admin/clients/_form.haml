@@ -1,0 +1,68 @@
+= nested_form_for [:admin, @client], multipart: true, remote: true do |f|
+
+  #errors.red-text.center.bold.hidden An error occured
+
+  .row
+    .input-field.col.s8.m4
+      = f.text_field :name
+      = f.label :name
+      %small.red-text#name_error
+
+  .row
+    .col.s12
+      = label_tag :image, 'Image'
+  .row
+    .col.s12
+      %ul.tabs
+        %li.tab.col.s6
+          %a{href: "#url", class: 'custom-color-text bold'} Paste URL
+        %li.tab.col.s6
+          %a{href: "#upload", class: 'custom-color-text bold'} Upload File
+
+    #url.col.s12
+      .top-space
+        .input-field
+          = f.text_field :image_url
+          = f.label :image_url, 'Image URL', class: 'active'
+          %small.red-text#image_url_error
+
+    #upload.col.s12
+      .row
+        .col.s12.no-padding
+          - if @client.photo.present?
+            = image_tag @client.photo.url, class: 'image_to_upload top-space', height: 300, width: 300
+            = f.check_box :delete_photo, class: 'hidden'
+            %a{href: "#", class: 'red-text delete-image'}
+              %i.material-icons.small delete
+          - else
+            %img{src: '',class: 'hidden image_to_upload top-space' }
+
+      .col.s12.m5.no-padding
+        .file-field.input-field
+          .btn.deep-purple.accent-4
+            %span Photo
+            = f.file_field :photo, class: 'photo_upload'
+          .file-path-wrapper
+            %input{type: 'text', class: 'file-path validate', value: @client.photo.original_filename}
+
+  .row
+    .col.s12.m2
+      = f.check_box :featured
+      = f.label :featured, 'Featured'
+
+  .row
+    .col.s12
+      = label_tag :categories, 'Categories'
+      = f.link_to_add :client_categories, class: 'deep-purple-text text-accent-4' ,:data => { :target => "#client_categories" } do
+        %i.material-icons{style: "vertical-align: middle"} add
+      %p.no-margin
+        %small.red-text#client_categories_error
+        %small.red-text#base_error
+    .col.s12#client_categories
+      = f.fields_for :client_categories do |cc_form|
+        .row
+          .col.s10.m6.no-padding
+            = cc_form.select :category_id, options_from_collection_for_select(@categories,'id','name',cc_form.object.category_id)
+          .col.s2.m2.little-top-space
+            = cc_form.link_to_remove class: 'red-text left' do
+              %i.material-icons.small delete

@@ -11,5 +11,8 @@ Rails.application.routes.draw do
     resources :organizations do
       put 'status', on: :member
     end
+    resources :clients, except: :destroy do
+      put 'status', on: :member
+    end
   end
 end

@@ -1,0 +1,5 @@
+$("#clients_index").html("<%= j render partial: 'client', collection: @clients, as: :client %>")
+$('.pagination-from-table').html('<%= j will_paginate @clients, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")
+
+$('.dropdown-button').dropdown({hover: true})

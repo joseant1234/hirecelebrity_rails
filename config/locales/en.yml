@@ -5,6 +5,8 @@ en:
         celebrity_categories: 'Categories'
       organization:
         organization_categories: 'Categories'
+      client:
+        client_categories: 'Categories'
 
     errors:
       models:
@@ -16,3 +18,7 @@ en:
           attributes:
             organization_categories:
               too_short: 'are too short (minimum is 1 category)'
+        client:
+          attributes:
+            client_categories:
+              too_short: 'are too short (minimun is 1 category)'
