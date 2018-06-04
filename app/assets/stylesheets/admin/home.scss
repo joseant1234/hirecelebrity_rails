@@ -59,7 +59,7 @@ table thead{
   background-color: #5900d0;
   color: white;
   a{
-    color: #ff9800;  
+    color: #ff9800;
   }
 }
 
@@ -68,4 +68,74 @@ table thead{
   right: 24px;
 }
 
+.logo{
+  vertical-align: middle;
+  margin: 0 1em;
+}
 
+.text-logo{
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#main {
+  overflow-y: auto;
+}
+
+#options .collection-item.option-item:hover{
+  -webkit-transition: all 200ms ease-in;
+  -ms-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+  background-color: white;
+
+  @extend .custom-color-text
+}
+
+.collection-item.option-item{
+  background-color: transparent;
+  border: 0px;
+  padding: 1em;
+}
+
+.collection#options{
+  border: 0px;
+  border-radius: 0px;
+}
+
+img.materialboxed{
+  background-color: white;
+}
+
+#error_explanation h2, #error_explanation li {
+  font-size: 14px;
+  margin: 0px;
+  line-height: 1.5;
+  font-weight: normal;
+  color: #f44336 ;
+}
+
+.two-lines{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.search-input input[type=text]:focus{
+  border-bottom: 1px solid #5900d0 !important;
+  box-shadow: 0 1px 0 0 #5900d0 !important;
+}
+.search-input .prefix.active {
+  color: #5900d0 !important;
+}
+
+.search-input .input-field label {
+  color: #5900d0 !important;
+}
+
+.search-input input[type=text]:focus + label {
+  color: #5900d0 !important;
+}

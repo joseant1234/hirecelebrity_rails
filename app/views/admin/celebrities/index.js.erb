@@ -1,0 +1,5 @@
+$("#celebrities_index").html("<%= j render partial: 'celebrity', collection: @celebrities, as: :celebrity %>")
+$('.pagination-from-table').html('<%= j will_paginate @celebrities, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")
+
+$('.dropdown-button').dropdown({hover: true})
