@@ -1,0 +1,3 @@
+$("#<%= dom_id @booking_topic %>").replaceWith("<%= j render partial: 'booking_topic', locals: {booking_topic: @booking_topic} %>")
+$("#modalConfirmation").modal('close')
+Materialize.toast("Successfully <%= @booking_topic.status %>d", 4000)

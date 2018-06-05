@@ -1,0 +1,46 @@
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Topics',admin_booking_topics_path, class: "breadcrumb blue-text"
+            = link_to @booking_topic.title,admin_booking_topic_path(@booking_topic), class: "breadcrumb blue-text"
+            = link_to 'VIEW',[:admin,@booking_topic], class: "breadcrumb black-text"
+
+    .row
+      .col.s12.m4
+        %span.bold Image
+      .col.s12.m8
+        = print_zoom_image(@booking_topic.portrait)
+
+    .row
+      .col.s12.m4
+        %span.bold Title
+      .col.s12.m8
+        %span= @booking_topic.title
+
+    .row
+      .col.s12.m4
+        %span.bold Category
+      .col.s12.m8
+        %span= @booking_topic.categories.sort_by(&:name).map(&:name).join(', ').html_safe.presence || '-'
+
+    .row
+      .col.s12.m4
+        %span.bold Popular
+      .col.s12.m8
+        %span= @booking_topic.popular.humanize
+    .row
+      .col.s12.m4
+        %span.bold Description
+      .col.s12.m8
+        %span{style: "white-space: pre-line"}= @booking_topic.description.presence || '-'
+
+
+
+
+
+
+        

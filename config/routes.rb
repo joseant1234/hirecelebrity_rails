@@ -21,5 +21,8 @@ Rails.application.routes.draw do
     resources :services, except: :destroy do
       put 'status', on: :member
     end
+    resources :booking_topics, except: :destroy do
+      put 'status', on: :member
+   end
   end
 end

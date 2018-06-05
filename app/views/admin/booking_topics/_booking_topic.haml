@@ -1,0 +1,13 @@
+%tr{id: "#{dom_id booking_topic}", class: "#{color_tr(booking_topic)}"}
+  %td= booking_topic.title
+  %td= booking_topic.popular.humanize
+  %td
+    .two-lines= booking_topic.categories.sort_by(&:name).map(&:name).join(', ').html_safe.presence || '-'
+  %td
+    = link_to admin_booking_topic_path(booking_topic), class: 'black-text' do
+      %i.material-icons visibility
+    %span &nbsp;
+    = link_to edit_admin_booking_topic_path(booking_topic), class: 'black-text' do
+      %i.material-icons edit
+    %span &nbsp;
+    = link_status booking_topic
