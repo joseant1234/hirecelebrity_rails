@@ -1,0 +1,17 @@
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12.m10
+            = link_to 'Celebrities',admin_celebrities_path, class: "breadcrumb blue-text"
+            = link_to @video.celebrity.name, admin_celebrity_path(@video.celebrity), class: "breadcrumb blue-text"
+            = link_to 'Videos',admin_celebrity_videos_path(@video.celebrity), class: "breadcrumb blue-text"
+            = link_to 'EDIT',edit_admin_video_path(@video), class: "breadcrumb black-text"
+          .col.s12.m2.right-text
+            = submit_tag 'Save', "data-disable-with": "Saving ...", class: 'deep-purple accent-4 btn', form: "edit_video_#{@video.id}"
+
+    .row
+      .col.s12
+        = render 'form'

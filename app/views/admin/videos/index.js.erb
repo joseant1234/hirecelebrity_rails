@@ -1,0 +1,3 @@
+$("#videos_index").html("<%= j render partial: 'video', collection: @videos, as: :video %>")
+$('.pagination-from-table').html('<%= j will_paginate @videos, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")

@@ -8,6 +8,7 @@ class Celebrity < ApplicationRecord
   has_many :categories, through: :celebrity_categories
   has_many :testimonials, as: :resource, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :videos, dependent: :destroy
 
   enum status: [:active, :desactive]
 
@@ -42,7 +43,7 @@ class Celebrity < ApplicationRecord
   def self.filter_by_featured
     where("speakers.featured = ?", true)
   end
-  
+
 
   # ---------- END CLASSES METHODS --------------
 

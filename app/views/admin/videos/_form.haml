@@ -1,0 +1,20 @@
+= form_for [:admin,@celebrity,@video], multipart: true, remote: true do |f|
+
+  #errors.red-text.center.bold.hidden An error occured
+
+  .row
+    .input-field.col.s12
+      = f.text_field :name,'data-length': '170'
+      = f.label :name
+      %small.red-text#name_error
+
+  .row
+    .input-field.col.s12
+      = f.text_field :url,'data-length': '170'
+      = f.label :url, 'URL (YouTube)'
+      %small.red-text#url_error
+
+  .row
+    .col.s12.m2
+      = f.check_box :featured
+      = f.label :featured, 'Featured'

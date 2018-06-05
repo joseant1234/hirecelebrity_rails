@@ -9,6 +9,8 @@ en:
         client_categories: 'Categories'
       event:
         event_services: 'Services'
+      video:
+        url: 'URL'
 
     errors:
       models:

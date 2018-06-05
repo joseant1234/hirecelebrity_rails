@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       put 'status', on: :member
       resources :testimonials, shallow: true
       resources :events, shallow: true
+      resources :videos, shallow: true, except: [:show]
     end
     resources :organizations, except: :destroy  do
       put 'status', on: :member

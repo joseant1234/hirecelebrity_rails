@@ -17,6 +17,6 @@
     %a.dropdown-button.black-text{"data-activates": "dropdown_actions_#{celebrity.id}","data-alignment": "left"}
       %i.material-icons more_vert
     %ul.dropdown-content{id: "dropdown_actions_#{celebrity.id}"}
-      %li= link_to 'Videos', ''
+      %li= link_to 'Videos', admin_celebrity_videos_path(celebrity)
       %li= link_to 'Testimonials', admin_celebrity_testimonials_path(celebrity)
       %li= link_to 'Events', admin_celebrity_events_path(celebrity)
