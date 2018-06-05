@@ -1,0 +1,27 @@
+.card.no-margin
+  .card-content
+    = form_tag admin_booking_requests_path, method: :get, remote: true do
+      %p.bold.medium FORMS
+      .row.no-margin
+        .input-field.col.s12.no-padding.search-input
+          %i.material-icons.prefix search
+          = text_field_tag :term, params[:term]
+          = label_tag :term, 'Search by name or email or phone number'
+      .row
+        .col.s12.no-padding
+          = button_tag :submit, "data-disable-with": "Searching ...", class: 'btn deep-purple accent-4 right' do
+            Search
+
+    = print_color_status
+
+    .overflow-x
+      %table.centered
+        %thead#table_header
+          = render 'table_header'
+        %tbody#booking_requests_index
+          = render @booking_requests
+
+    .top-space.center.pagination-from-table
+      = will_paginate @booking_requests, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer
+
+= render 'admin/shareds/modal_confirmation'

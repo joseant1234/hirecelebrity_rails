@@ -1,0 +1,75 @@
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Forms',admin_booking_requests_path, class: "breadcrumb blue-text"
+            = link_to @booking_request.name,admin_booking_request_path(@booking_request), class: "breadcrumb blue-text"
+            = link_to 'VIEW',[:admin,@booking_request], class: "breadcrumb black-text"
+    .row
+      .col.s12.m4
+        %span.bold Name
+      .col.s12.m8
+        %span= @booking_request.name
+
+    .row
+      .col.s12.m4
+        %span.bold Date sent
+      .col.s12.m8
+        %span= @booking_request.created_at.to_date
+
+    .row
+      .col.s12.m4
+        %span.bold Company
+      .col.s12.m8
+        %span= @booking_request.company
+
+    .row
+      .col.s12.m4
+        %span.bold Email
+      .col.s12.m8
+        %span= @booking_request.email
+
+    .row
+      .col.s12.m4
+        %span.bold Phone number
+      .col.s12.m8
+        %span= @booking_request.phone
+
+    .row
+      .col.s12.m4
+        %span.bold Service
+      .col.s12.m8
+        %span= @booking_request.service.name
+
+    .row
+      .col.s12.m4
+        %span.bold Celebrity talent
+      .col.s12.m8
+        %span= @booking_request.celebrity.present? ? @booking_request.celebrity.display_full_name : '-'
+
+    .row
+      .col.s12.m4
+        %span.bold Event date
+      .col.s12.m8
+        %span= @booking_request.event_date.to_date
+
+    .row
+      .col.s12.m4
+        %span.bold Event location
+      .col.s12.m8
+        %span= @booking_request.event_location
+
+    .row
+      .col.s12.m4
+        %span.bold Budget
+      .col.s12.m8
+        %span= "$ #{@booking_request.budget}"
+
+    .row
+      .col.s12.m4
+        %span.bold Comments
+      .col.s12.m8
+        %span{style: "white-space: pre-line"}= @booking_request.comments

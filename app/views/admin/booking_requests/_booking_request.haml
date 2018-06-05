@@ -1,0 +1,12 @@
+%tr{id: "#{dom_id booking_request}", class: "#{color_tr(booking_request)}"}
+  %td= booking_request.name
+  %td= booking_request.created_at.to_date
+  %td= booking_request.email
+  %td= booking_request.phone
+  %td= booking_request.event_date.to_date
+  %td= booking_request.is_booking_request? ? 'Booking request' : 'Contact form'
+  %td
+    = link_to admin_booking_request_path(booking_request), class: 'black-text' do
+      %i.material-icons visibility
+    %span &nbsp;
+    = link_status(booking_request)

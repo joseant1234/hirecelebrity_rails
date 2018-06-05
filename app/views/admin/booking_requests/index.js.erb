@@ -1,0 +1,3 @@
+$("#booking_requests_index").html("<%= j render partial: 'booking_request', collection: @booking_requests, as: :booking_request %>")
+$('.pagination-from-table').html('<%= j will_paginate @booking_requests, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")

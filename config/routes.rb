@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, controllers: { sessions: 'admins/sessions', passwords: 'admins/passwords' }
+  devise_for :admins, controllers: { sessions: 'admins/sessions', passwords: 'admins/passwords' }, skip: :registrations
 
   namespace :admin do
   	root 'celebrities#index'
@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     end
     resources :booking_topics, except: :destroy do
       put 'status', on: :member
-   end
+    end
+    resources :booking_requests, only: %i[index show] do
+      put 'status', on: :member
+    end
   end
 end
