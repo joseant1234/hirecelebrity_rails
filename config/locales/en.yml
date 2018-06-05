@@ -7,6 +7,8 @@ en:
         organization_categories: 'Categories'
       client:
         client_categories: 'Categories'
+      event:
+        event_services: 'Services'
 
     errors:
       models:
@@ -22,3 +24,7 @@ en:
           attributes:
             client_categories:
               too_short: 'are too short (minimun is 1 category)'
+        event:
+          attributes:
+            event_services:
+              too_short: 'are too short (minimun is 1 service)'

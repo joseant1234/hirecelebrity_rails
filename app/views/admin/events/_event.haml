@@ -1,0 +1,16 @@
+%tr{id: "#{dom_id event}"}
+  %td= event.title
+  %td
+    .two-lines= event.services.sort_by(&:name).map(&:name).join(', ').html_safe
+  %td
+    .two-lines= event.categories.sort_by(&:name).map(&:name).join(', ').html_safe
+  %td= event.created_at.to_date
+  %td
+    = link_to admin_event_path(event), class: 'black-text' do
+      %i.material-icons visibility
+    %span &nbsp;
+    = link_to edit_admin_event_path(event), class: 'black-text' do
+      %i.material-icons edit
+    %span &nbsp;
+    %a{href: "#", 'data-url': "#{admin_event_path(event)}", 'data-confirmation-text': "#{event.title}",'data-option-text': 'delete', class: 'open-modal-confirmation red-text'}
+      %i.material-icons delete

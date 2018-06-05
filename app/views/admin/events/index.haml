@@ -1,0 +1,39 @@
+.fixed-action-btn.new-button
+  = link_to new_admin_celebrity_event_path(@celebrity), class: "btn-floating waves-effect waves-light btn-large deep-purple accent-4 btn" do
+    %i.material-icons add
+
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Celebrities',admin_celebrities_path, class: "breadcrumb blue-text"
+            = link_to @celebrity.name,admin_celebrity_path(@celebrity), class: "breadcrumb blue-text"
+            = link_to 'Events',admin_celebrity_events_path(@celebrity), class: "breadcrumb black-text"
+
+    = form_tag admin_celebrity_events_path(@celebrity), method: :get, remote: true do
+      %p.bold.medium EVENTS
+      .row.no-margin
+        .input-field.col.s12.no-padding.search-input
+          %i.material-icons.prefix search
+          = text_field_tag :term, params[:term]
+          = label_tag :term, 'Search by title or service'
+      .row
+        .col.s12.no-padding
+          = button_tag :submit, "data-disable-with": "Searching ...", class: 'btn deep-purple accent-4 right' do
+            Search
+
+    .overflow-x
+      %table.centered
+        %thead#table_header
+          = render 'table_header'
+        %tbody#events_index
+          = render @events
+
+    .top-space.center.pagination-from-table
+      = will_paginate @events, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer
+
+
+= render 'admin/shareds/modal_confirmation'

@@ -22,4 +22,8 @@ module LoadInformationConcern extend ActiveSupport::Concern
     @fee_ranges = Celebrity::FEE_RANGES
   end
 
+  def load_services
+    @services= Service.except_other.active.order_by_name  
+  end
+
 end

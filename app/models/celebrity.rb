@@ -7,6 +7,7 @@ class Celebrity < ApplicationRecord
   has_many :celebrity_categories, dependent: :destroy
   has_many :categories, through: :celebrity_categories
   has_many :testimonials, as: :resource, dependent: :destroy
+  has_many :events, dependent: :destroy
 
   enum status: [:active, :desactive]
 
@@ -37,9 +38,18 @@ class Celebrity < ApplicationRecord
     .left_joins(:organization)
     .where("LOWER(celebrities.name) LIKE ? OR LOWER(celebrities.last_name) LIKE ? OR LOWER(categories.name) LIKE ? OR LOWER(organizations.name) LIKE ?", "%#{term.downcase}%", "%#{term.downcase}%", "%#{term.downcase}%", "%#{term.downcase}%").group(:id)
   end
+
+  def self.filter_by_featured
+    where("speakers.featured = ?", true)
+  end
+  
+
   # ---------- END CLASSES METHODS --------------
 
   # ---------- INSTANCE METHODS -----------------
+  def display_full_name
+    "#{self.name} #{self.last_name}"
+  end
   # ---------- END INSTANCE METHODS -------------
   private
 

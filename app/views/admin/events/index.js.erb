@@ -1,0 +1,3 @@
+$("#events_index").html("<%= j render partial: 'event', collection: @events, as: :event %>")
+$('.pagination-from-table').html('<%= j will_paginate @events, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")

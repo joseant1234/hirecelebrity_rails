@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'wikipedia', on: :collection
       put 'status', on: :member
       resources :testimonials, shallow: true
+      resources :events, shallow: true
     end
     resources :organizations, except: :destroy  do
       put 'status', on: :member

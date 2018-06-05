@@ -1,0 +1,40 @@
+.card.no-margin
+  .card-content
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Celebrities',admin_celebrities_path, class: "breadcrumb blue-text"
+            = link_to @event.celebrity.name,admin_celebrity_path(@event.celebrity), class: "breadcrumb blue-text"
+            = link_to 'Events',admin_celebrity_events_path(@event.celebrity), class: "breadcrumb blue-text"
+            = link_to 'VIEW',[:admin,@event], class: "breadcrumb black-text"
+
+    .row
+      .col.s12.m4
+        %span.bold Image
+      .col.s12.m8
+        = print_zoom_image(@event.portrait)
+
+    .row
+      .col.s12.m4
+        %span.bold Title
+      .col.s12.m8
+        %span= @event.title
+
+    .row
+      .col.s12.m4
+        %span.bold Body
+      .col.s12.m8
+        %span{style: "white-space: pre-line"}= @event.body
+
+    .row
+      .col.s12.m4
+        %span.bold Service
+      .col.s12.m8
+        %span= @event.services.sort_by(&:name).map(&:name).join(', ').html_safe
+
+    .row
+      .col.s12.m4
+        %span.bold Category
+      .col.s12.m8
+        %span= @event.categories.sort_by(&:name).map(&:name).join(', ').html_safe
