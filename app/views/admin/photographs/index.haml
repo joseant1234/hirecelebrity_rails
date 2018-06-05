@@ -1,0 +1,38 @@
+.fixed-action-btn.new-button
+  = link_to new_admin_site_photograph_path(@site), class: "btn-floating waves-effect waves-light btn-large deep-purple accent-4 btn" do
+    %i.material-icons add
+
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Sites',admin_sites_path, class: "breadcrumb blue-text"
+            = link_to @site.name,admin_site_photographs_path(@site), class: "breadcrumb blue-text"
+            = link_to 'Photos',admin_site_photographs_path(@site), class: "breadcrumb black-text"
+
+    .row
+      .col.s12.m5
+        %span.bold Remaining amount of photos for banner section:
+      .col.s12.m7
+        = banner_remaing_amount(@site)
+    .row
+      .col.s12.m5
+        %span.bold Remaining amount of photos for who we are section:
+      .col.s12.m7
+        = who_we_are_remaing_amount(@site)
+
+    .overflow-x
+      %table.centered
+        %thead#table_header
+          = render 'table_header'
+        %tbody#photographs_index
+          = render @photographs
+
+    .top-space.center.pagination-from-table
+      = will_paginate @photographs, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer
+
+.modal#modalShowPhotograph{style: "width: 80%; height: 80%"}
+= render 'admin/shareds/modal_confirmation'

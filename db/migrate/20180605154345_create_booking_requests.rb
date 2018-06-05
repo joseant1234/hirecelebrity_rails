@@ -12,6 +12,7 @@ class CreateBookingRequests < ActiveRecord::Migration[5.1]
       t.integer :status, default: 0
       t.references :service, foreign_key: true
       t.references :celebrity, foreign_key: true
+      t.references :site, foreign_key: true
 
       t.timestamps
     end

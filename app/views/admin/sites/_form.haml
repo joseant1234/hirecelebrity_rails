@@ -1,0 +1,143 @@
+= nested_form_for [:admin, @site], multipart: true, remote: true do |f|
+
+  #errors.red-text.center.bold.hidden An error occured
+
+  .row
+    .input-field.col.s12.m4
+      = f.text_field :name, 'data-length': '50'
+      = f.label :name
+      %small.red-text#name_error
+
+  .row
+    .input-field.col.s8.m4
+      = f.text_field :url, 'data-length': '50'
+      = f.label :url, 'URL (domain)'
+      %small.red-text#url_error
+
+  .row
+    .input-field.col.s12
+      = f.text_area :general_service, class: 'materialize-textarea count-textarea', 'data-length': '2000'
+      = f.label :general_service
+      %small.red-text#general_service_error
+
+  .row
+    .input-field.col.s12
+      = f.text_area :terms_and_conditions, class: 'materialize-textarea count-textarea', 'data-length': '2000'
+      = f.label :terms_and_conditions
+      %small.red-text#terms_and_conditions_error
+
+  .row
+    .col.s12
+      = label_tag :logo, 'Logo'
+  .row
+    .col.s12
+      %ul.tabs
+        %li.tab.col.s6
+          %a{href: "#url", class: 'custom-color-text bold'} Paste URL
+        %li.tab.col.s6
+          %a{href: "#upload", class: 'custom-color-text bold'} Upload File
+
+    #url.col.s12
+      .top-space
+        .input-field
+          = f.text_field :image_logo_url
+          = f.label :image_logo_url, 'Logo URL', class: 'active'
+          %small.red-text#image_logo_url_error
+
+    #upload.col.s12
+      .row
+        .col.s12.no-padding
+          - if @site.logo.present?
+            = image_tag @site.logo.url, class: 'image_to_upload top-space', height: 300, width: 300
+            = f.check_box :delete_logo, class: 'hidden'
+            %a{href: "#", class: 'red-text delete-image'}
+              %i.material-icons.small delete
+          - else
+            %img{src: '',class: 'hidden image_to_upload top-space' }
+
+      .col.s12.m5.no-padding
+        .file-field.input-field
+          .btn.deep-purple.accent-4
+            %span Logo
+            = f.file_field :logo, class: 'photo_upload'
+          .file-path-wrapper
+            %input{type: 'text', class: 'file-path validate', value: @site.logo.original_filename}
+
+  .row
+    .input-field.col.s8.m4
+      = f.text_field :phone
+      = f.label :phone
+      %small.red-text#phone_error
+
+    .input-field.col.s12.m4
+      = f.text_field :facebook_url, 'data-length': '50'
+      = f.label :facebook_url, 'Facebook (optional)'
+      %small.red-text#facebook_url_error
+
+    .input-field.col.s12.m4
+      = f.text_field :twitter_url, 'data-length': '50'
+      = f.label :twitter_url, 'Twitter (optional)'
+      %small.red-text#twitter_url_error
+
+  .row
+    .col.s12
+      = label_tag :categories, 'Categories'
+      = f.link_to_add :site_categories, class: 'deep-purple-text text-accent-4' ,:data => { :target => "#site_categories" } do
+        %i.material-icons{style: "vertical-align: middle"} add
+      %p.no-margin
+        %small.red-text#site_categories_error
+        %small.red-text#base_error
+    .col.s12#site_categories
+      = f.fields_for :site_categories do |s_form|
+        .row
+          .col.s10.m6.no-padding
+            = s_form.select :category_id, options_from_collection_for_select(@categories,'id','name',s_form.object.category_id)
+          .col.s10.m2.small-top-space
+            = s_form.check_box :show_in_footer
+            = s_form.label :show_in_footer, 'Show in footer'
+          .col.s2.m2.little-top-space
+            = s_form.link_to_remove class: 'red-text left' do
+              %i.material-icons.small delete
+
+
+  .row
+    .col.s12
+      %span.medium.bold Homepage
+
+  .row
+    .input-field.col.s12
+      = f.text_area :who_we_are, class: 'materialize-textarea count-textarea', 'data-length': '500'
+      = f.label :who_we_are
+      %small.red-text#who_we_are_error
+
+  .row
+    .input-field.col.s12
+      = f.text_area :footer, class: 'materialize-textarea count-textarea', 'data-length': '2000'
+      = f.label :footer
+      %small.red-text#footer_error
+
+  .row
+    .input-field.col.s12.m4
+      = f.select :banner_option, class_enum_for_select("Site", "banner_option"), prompt: "Choose an option"
+      = f.label :banner_option
+      %small.red-text#banner_option_error
+
+  .row
+    .input-field.col.s8.m4
+      = f.text_field :header_info, 'data-length': '50'
+      = f.label :header_info
+      %small.red-text#header_info_error
+
+  .row
+    .col.s12.m3
+      = f.color_field :primary_color
+      = f.label :primary_color, class: 'left-space'
+    .col.s12.m3
+      = f.color_field :accent_color
+      = f.label :accent_color, class: 'left-space'
+    .col.s12.m3
+      = f.color_field :gradient_accent_color
+      = f.label :gradient_accent_color, class: 'left-space'
+    .col.s12.m3
+      = f.color_field :footer_color
+      = f.label :footer_color, class: 'left-space'

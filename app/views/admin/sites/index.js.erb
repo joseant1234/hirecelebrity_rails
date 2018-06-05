@@ -1,0 +1,5 @@
+$("#sites_index").html("<%= j render partial: 'site', collection: @sites, as: :site %>")
+$('.pagination-from-table').html('<%= j will_paginate @sites, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")
+
+$('.dropdown-button').dropdown({hover: true})

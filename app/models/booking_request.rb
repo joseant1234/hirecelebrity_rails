@@ -2,6 +2,7 @@ class BookingRequest < ApplicationRecord
 
   belongs_to :service
   belongs_to :celebrity, optional: true
+  belongs_to :site
 
   enum status: [:active, :desactive]
 

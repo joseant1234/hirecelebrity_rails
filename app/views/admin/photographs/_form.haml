@@ -1,0 +1,65 @@
+= form_for [:admin,@site, @photograph], remote: true do |f|
+
+  #errors.red-text.center.bold.hidden An error occured
+
+  .row
+    .input-field.col.s12.m6
+      = f.text_field :title, 'data-length': '100'
+      = f.label :title
+      %small.red-text#title_error
+
+    .input-field.col.s12.m4
+      = f.select(:section, class_enum_for_select("Photograph", "section"), {prompt: "Choose an option"},{class: 'select-section'})
+      = f.label :section
+      %small.red-text#section_error
+
+  .row#section_banner_fields{class: "#{'hidden' unless @photograph.banner?}"}
+    .input-field.col.s12.m6
+      = f.text_field :subtitle, 'data-length': '200'
+      = f.label :subtitle
+      %small.red-text#subtitle_error
+
+    .input-field.col.s12.m6
+      = f.text_field :url, 'data-length': '200'
+      = f.label :url, 'URL'
+      %small.red-text#url_error
+
+  .row
+    .col.s12
+      = label_tag :image, 'Image'
+      %p.no-margin
+        %small.red-text#base_error
+
+  .row
+    .col.s12
+      %ul.tabs
+        %li.tab.col.s6
+          %a{href: "#url", class: 'custom-color-text bold'} Paste URL
+        %li.tab.col.s6
+          %a{href: "#upload", class: 'custom-color-text bold'} Upload File
+
+    #url.col.s12
+      .top-space
+        .input-field
+          = f.text_field :image_url
+          = f.label :image_url, 'Image URL', class: 'active'
+          %small.red-text#image_url_error
+
+    #upload.col.s12
+      .row
+        .col.s12.no-padding
+          - if @photograph.photo.present?
+            = image_tag @photograph.photo.url, class: 'image_to_upload top-space', height: 300, width: 300
+            = f.check_box :delete_photo, class: 'hidden'
+            %a{href: "#", class: 'red-text delete-image'}
+              %i.material-icons.small delete
+          - else
+            %img{src: '',class: 'hidden image_to_upload top-space' }
+
+      .col.s12.m5.no-padding
+        .file-field.input-field
+          .btn.deep-purple.accent-4
+            %span Photo
+            = f.file_field :photo, class: 'photo_upload'
+          .file-path-wrapper
+            %input{type: 'text', class: 'file-path validate', value: @photograph.photo.original_filename}

@@ -10,6 +10,7 @@ booking_requests = [
 	 comments: 'Algun comentario',
 	 service_id: 1,
 	 celebrity_id: 1,
+	 site: Site.first
 	},
 	{id: 2,
 	 name: 'Name 2 last name 2',
@@ -22,6 +23,7 @@ booking_requests = [
 	 comments: 'Algun comentario',
 	 service_id: 3,
 	 celebrity_id: 2,
+	 site: Site.first
 	},
 	{id: 3,
 	 name: 'Name 3 last name 3',
@@ -34,6 +36,7 @@ booking_requests = [
 	 comments: 'Algun comentario',
 	 service_id: 2,
 	 celebrity_id: 1,
+	 site: Site.first
 	},
 	{id: 4,
 	 name: 'Name 4 last name 4',
@@ -45,6 +48,7 @@ booking_requests = [
 	 event_location: 'California',
 	 comments: 'Algun comentario',
 	 service_id: 6,
+	 site: Site.first
 	}
 ]
 

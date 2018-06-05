@@ -1,0 +1,24 @@
+%tr{id: "#{dom_id site}", class: "#{color_tr(site)}"}
+  %td
+    - unless site.featured?
+      %a{href: "#", 'data-url': "#{featured_admin_site_path(site)}", 'data-confirmation-text': "#{site.name}", "data-option-method": "put", class: 'open-modal-confirmation purple-text', 'data-option-text': 'feature'}
+        %i.material-icons star_border
+    - else
+      %i.material-icons star
+  %td= site.name
+  %td
+    .two-lines= site.categories.sort_by(&:name).map(&:name).join(', ')
+  %td= site.url
+  %td
+    = link_to admin_site_path(site), class: 'black-text' do
+      %i.material-icons visibility
+    %span &nbsp;
+    = link_to edit_admin_site_path(site), class: 'black-text' do
+      %i.material-icons edit
+    %span &nbsp;
+    = link_status site
+    %span &nbsp;
+    %a.dropdown-button.black-text{"data-activates": "dropdown_actions_#{site.id}","data-alignment": "left"}
+      %i.material-icons more_vert
+    %ul.dropdown-content{id: "dropdown_actions_#{site.id}"}
+      %li= link_to 'Photos', admin_site_photographs_path(site)

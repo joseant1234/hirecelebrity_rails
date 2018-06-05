@@ -11,6 +11,8 @@ en:
         event_services: 'Services'
       video:
         url: 'URL'
+      site:
+        site_categories: 'Categories'
 
     errors:
       models:
@@ -30,3 +32,7 @@ en:
           attributes:
             event_services:
               too_short: 'are too short (minimun is 1 service)'
+        site:
+          attributes:
+            site_categories:
+              too_short: 'are too short (minimun is 1 category)'

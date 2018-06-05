@@ -1,0 +1,3 @@
+$("#photographs_index").html("<%= j render partial: 'photograph', collection: @photographs, as: :photograph %>")
+$('.pagination-from-table').html('<%= j will_paginate @photographs, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")

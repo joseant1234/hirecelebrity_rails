@@ -1,0 +1,89 @@
+.card.no-margin
+  .card-content
+
+    .row.border-collection
+      %nav.white.black-text.z-depth-0
+        .nav-wrapper
+          .col.s12
+            = link_to 'Sites',admin_sites_path, class: "breadcrumb blue-text"
+            = link_to @site.name,admin_site_path(@site), class: "breadcrumb blue-text"
+            = link_to 'VIEW','', class: "breadcrumb black-text"
+
+    .row
+      .col.s12.m4
+        %span.bold Name
+      .col.s12.m8
+        %span= @site.name
+
+    .row
+      .col.s12.m4
+        %span.bold URL (domain)
+      .col.s12.m8
+        %span= @site.url
+
+    .row
+      .col.s12.m4
+        %span.bold Category
+      .col.s12.m8
+        %span= @site.categories.sort_by(&:name).map(&:name).join(', ').html_safe
+
+    .row
+      .col.s12.m4
+        %span.bold Who we are
+      .col.s12.m8
+        %span= @site.who_we_are.html_safe
+
+    .row
+      .col.s12.m4
+        %span.bold General Service
+      .col.s12.m8
+        %span= @site.general_service.html_safe
+
+    .row
+      .col.s12.m4
+        %span.bold Terms and conditions
+      .col.s12.m8
+        %span= @site.terms_and_conditions.html_safe
+
+    .row
+      .col.s12.m4
+        %span.bold Logo
+      .col.s12.m8
+        - if @site.logo.url.present?
+          = image_tag @site.logo, height: "8%", width: "8%"
+
+    .row
+      .col.s12.m4
+        %span.bold Phone
+      .col.s12.m8
+        %span= @site.phone
+
+    .row
+      .col.s12.m4
+        %span.bold Facebook
+      .col.s12.m8
+        %span= @site.facebook_url
+
+    .row
+      .col.s12.m4
+        %span.bold Twitter
+      .col.s12.m8
+        %span= @site.twitter_url
+
+    .row
+      .col.s12.m4
+        %span.bold Footer
+      .col.s12.m8
+        %span= @site.footer.try(:html_safe)
+
+    .row
+      .col.s12.m4
+        %span.bold Banner Option
+      .col.s12.m8
+        %span= @site.banner_option.humanize
+
+    .row
+      .col.s12.m4
+        %span.bold Header Info
+      .col.s12.m8
+        %span= @site.header_info

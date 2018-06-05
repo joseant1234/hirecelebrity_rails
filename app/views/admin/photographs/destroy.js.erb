@@ -1,0 +1,12 @@
+$("#<%= dom_id @photograph %>").fadeOut("slow",function(){$(this).remove()})
+
+<% if @photograph.section == 'who_we_are' %>
+  remaing_amount = parseInt($("#who_we_are_count").text()) + 1
+  $("#who_we_are_count").text(remaing_amount)
+<% elsif @photograph.section == 'banner' %>
+  remaing_amount = parseInt($("#banner_count").text()) + 1
+  $("#banner_count").text(remaing_amount)
+<% end %>
+
+$("#modalConfirmation").modal('close')
+Materialize.toast('Successfully deleted', 4000)

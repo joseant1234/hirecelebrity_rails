@@ -27,5 +27,13 @@ Rails.application.routes.draw do
     resources :booking_requests, only: %i[index show] do
       put 'status', on: :member
     end
+    resources :sites, except: :destroy do
+      resources :photographs, shallow: true
+      member do
+        put 'featured'
+        put 'status'
+      end
+    end
+    
   end
 end

@@ -1,0 +1,11 @@
+%tr{id: "#{dom_id photograph}"}
+  %td= photograph.title
+  %td= photograph.subtitle.presence || '-'
+  %td= photograph.section.titleize
+  %td
+    = link_to admin_photograph_path(photograph), remote: true, class: 'black-text' do
+      %i.material-icons photo
+    = link_to edit_admin_photograph_path(photograph), class: 'black-text' do
+      %i.material-icons edit
+    %a{href: "#", 'data-url': "#{admin_photograph_path(photograph)}", 'data-confirmation-text': "#{photograph.title}", 'data-option-text': 'delete', class: 'open-modal-confirmation red-text'}
+      %i.material-icons delete
