@@ -1,5 +1,6 @@
 class Video < ApplicationRecord
-  include SortableConcern
+
+  include SortableConcern, SitesConcern
 
   belongs_to :celebrity
   has_many :categories, through: :celebrity

@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-  include SortableConcern, PictureConcern
+  include SortableConcern, PictureConcern, SitesConcern
 
   has_many :client_categories, dependent: :destroy
   has_many :categories, through: :client_categories

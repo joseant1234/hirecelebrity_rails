@@ -1,11 +1,12 @@
 class Event < ApplicationRecord
 
-  include SortableConcern, PictureConcern
+  include SortableConcern, PictureConcern, SitesConcern
 
   belongs_to :celebrity
   has_many :event_services, dependent: :destroy
   has_many :categories, through: :celebrity
   has_many :services, through: :event_services
+  has_many :celebrity_categories, through: :celebrity
 
   accepts_nested_attributes_for :event_services, allow_destroy: true
 

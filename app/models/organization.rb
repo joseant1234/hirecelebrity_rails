@@ -1,10 +1,12 @@
 class Organization < ApplicationRecord
 
-  include SortableConcern, PictureConcern
+  include SortableConcern, PictureConcern, SitesConcern
 
-  has_many :organization_categories, dependent: :destroy
-  has_many :categories, through: :organization_categories
   has_many :celebrities
+  has_many :organization_categories, dependent: :destroy
+  has_many :celebrities_categories, through: :celebrities
+  has_many :categories, through: :organization_categories
+  has_many :videos, through: :celebrities
 
   enum status: [:active, :desactive]
 

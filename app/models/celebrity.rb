@@ -1,6 +1,6 @@
 class Celebrity < ApplicationRecord
 
-  include SortableConcern, PictureConcern
+  include SortableConcern, PictureConcern, SitesConcern
 
   belongs_to :state
   belongs_to :organization, optional: true
@@ -9,6 +9,7 @@ class Celebrity < ApplicationRecord
   has_many :testimonials, as: :resource, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :videos, dependent: :destroy
+  has_many :booking_requests, dependent: :destroy
 
   enum status: [:active, :desactive]
 

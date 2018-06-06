@@ -1,0 +1,4 @@
+$("#categories_index").prepend("<%= j render partial: 'category', locals: { category: @category } %>")
+$("#modalCategory").modal("close")
+
+ Materialize.toast('Successfully created', 4000)

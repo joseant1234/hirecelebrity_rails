@@ -1,5 +1,6 @@
 class Testimonial < ApplicationRecord
-  include SortableConcern
+
+  include SortableConcern, SitesConcern
 
   belongs_to :resource, polymorphic: true
   has_many :testimonial_categories, dependent: :destroy

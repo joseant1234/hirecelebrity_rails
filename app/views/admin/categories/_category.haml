@@ -1,0 +1,14 @@
+%tr{id: "#{dom_id category}", class: "#{color_tr(category)}"}
+  %td= category.name
+  %td= link_to category.site_categories_count, admin_sites_path(term: category.name)
+  %td= link_to category.celebrity_categories_count,admin_celebrities_path(term: category.name)
+  %td= link_to category.service_categories_count,admin_services_path(term: category.name)
+  %td= link_to category.booking_topic_categories_count,admin_booking_topics_path(term: category.name)
+  %td= link_to category.client_categories_count,admin_clients_path(term: category.name)
+  %td= link_to category.organization_categories_count,admin_organizations_path(term: category.name)
+  %td
+    = link_to admin_category_path(category), remote: true, class: 'black-text' do
+      %i.material-icons visibility
+    = link_to edit_admin_category_path(category), remote: true, class: 'black-text' do
+      %i.material-icons edit
+    = link_status category

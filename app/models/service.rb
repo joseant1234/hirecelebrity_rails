@@ -1,8 +1,10 @@
 class Service < ApplicationRecord
-  include SortableConcern, PictureConcern
+  include SortableConcern, PictureConcern, SitesConcern
 
   has_many :service_categories, dependent: :destroy
+  has_many :event_services, dependent: :destroy
   has_many :categories, through: :service_categories
+  has_many :events, through: :event_services
 
   enum status: [:active, :desactive]
 

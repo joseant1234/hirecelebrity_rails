@@ -1,6 +1,6 @@
 class BookingTopic < ApplicationRecord
 
-  include SortableConcern, PictureConcern
+  include SortableConcern, PictureConcern, SitesConcern
 
   has_many :booking_topic_categories, dependent: :destroy
   has_many :categories, through: :booking_topic_categories
@@ -42,5 +42,5 @@ class BookingTopic < ApplicationRecord
   def validate_unique_booking_topic_categories
     validate_uniqueness_of_in_memory(booking_topic_categories, [:category_id, :booking_topic_id], 'Duplicate categories')
   end
-  
+
 end

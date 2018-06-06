@@ -1,0 +1,15 @@
+.modal-content
+  .row
+    .col.s12.m4
+      %span.bold Name:
+    .col.s12.m8
+      %span= @category.name
+  .row
+    .col.s12.m4
+      %span.bold Description:
+    .col.s12.m8
+      %span= @category.description.html_safe
+
+
+.modal-footer
+  %a{class: 'modal-action modal-close waves-effect waves-green btn-flat'} Cerrar

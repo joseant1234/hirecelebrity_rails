@@ -34,6 +34,9 @@ Rails.application.routes.draw do
         put 'status'
       end
     end
+    resources :categories, except: :destroy do
+      put 'status', on: :member
+    end
   end
 
   namespace :front, path: '' do

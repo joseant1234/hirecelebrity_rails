@@ -1,0 +1,20 @@
+= form_for [:admin, @category], remote: true do |f|
+
+  #errors.red-text.center.bold.hidden An error occured
+
+  .row
+    .input-field.col.s12
+      = f.text_field :name
+      = f.label :name
+      %small.red-text#name_error
+
+  .row
+    .input-field.col.s12
+      = f.text_area :description, class: 'materialize-textarea count-textarea', 'data-length': '1000'
+      = f.label :description
+      %small.red-text#description_error
+      
+  .row
+    .col.s12
+      = f.button :submit, "data-disable-with": "Saving ...", class: 'btn deep-purple accent-4 btn' do
+        Save

@@ -1,5 +1,5 @@
 class Photograph < ApplicationRecord
-  include SortableConcern, PictureConcern
+  include SortableConcern, PictureConcern, SitesConcern
 
    belongs_to :site
 

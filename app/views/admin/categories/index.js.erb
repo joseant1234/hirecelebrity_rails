@@ -1,0 +1,3 @@
+$("#categories_index").html("<%= j render partial: 'category', collection: @categories, as: :category %>")
+$('.pagination-from-table').html('<%= j will_paginate @categories, renderer: MaterializePaginationCustomHelper::PaginateMaterailizeLinkRenderer %>')
+$("#table_header").html("<%= j render 'table_header' %>")
