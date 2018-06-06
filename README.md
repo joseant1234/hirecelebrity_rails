@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project covers:
 
-Things you may want to cover:
+* Multiple layouts (Ready)
 
-* Ruby version
+* Handling multiples domains (Ready)
 
-* System dependencies
+* Admin (Ready)
 
-* Configuration
+* Views for end-user - front
 
-* Database creation
+* CRUD (Ready)
 
-* Database initialization
+* CONCERNS (Ready)
 
-* How to run the test suite
+* DECORATORS (Ready)
 
-* Services (job queues, cache servers, search engines, etc.)
+* Cors
 
-* Deployment instructions
+* Sitemap with multiple domains
+
+* Sidekiq
+
 
 * ...
