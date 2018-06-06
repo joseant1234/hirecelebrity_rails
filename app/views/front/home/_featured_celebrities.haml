@@ -1,5 +1,4 @@
 .slider
   %ul.slides
-    - @featured_celebrities.each do |featured_celebrity|
-      %li
-        = image_tag featured_celebrity.portrait
+    - @featured_celebrities.in_groups_of(2,false).each do |group|
+      %li= render partial: 'celebrity', collection: group, as: :featured_celebrity
