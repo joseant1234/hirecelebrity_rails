@@ -11,7 +11,7 @@ module AdminHelper
   end
 
   def link_new_testimonial(celebrity_or_client)
-    route = celebrity_or_client.class.name == 'Speaker' ? new_admin_celebrity_testimonial_path(celebrity_or_client) : new_admin_client_testimonial_path(celebrity_or_client)
+    route = celebrity_or_client.class.name == 'Celebrity' ? new_admin_celebrity_testimonial_path(celebrity_or_client) : new_admin_client_testimonial_path(celebrity_or_client)
     link_to new_admin_celebrity_testimonial_path(celebrity_or_client), class: "btn-floating waves-effect waves-light btn-large deep-purple accent-4 btn" do
       content_tag(:i,'add',class: 'material-icons')
     end

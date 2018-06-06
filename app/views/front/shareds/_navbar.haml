@@ -1,5 +1,6 @@
 %nav
   .nav-wrapper.custom-color
+    = image_tag current_site.logo, class: 'logo'
     = link_to 'Hire Celebrities', front_root_path, class: 'brand-logo'
     %a.button-collapse{href: '#', 'data-activates': 'mobile'}
       %i.material-icons menu

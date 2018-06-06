@@ -1,0 +1,5 @@
+.slider
+  %ul.slides
+    - @featured_celebrities.each do |featured_celebrity|
+      %li
+        = image_tag featured_celebrity.portrait

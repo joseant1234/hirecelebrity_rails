@@ -42,7 +42,7 @@ class Celebrity < ApplicationRecord
   end
 
   def self.filter_by_featured
-    where("speakers.featured = ?", true)
+    where("celebrities.featured = ?", true)
   end
 
 

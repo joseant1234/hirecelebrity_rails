@@ -14,7 +14,7 @@ module LoadInformationConcern extend ActiveSupport::Concern
     @categories = Category.active.order_by_name
   end
 
-  def load_speakers
+  def load_celerities
     @celebrities = Celebrity.active.order_by_name
   end
 
@@ -23,7 +23,7 @@ module LoadInformationConcern extend ActiveSupport::Concern
   end
 
   def load_services
-    @services= Service.except_other.active.order_by_name  
+    @services= Service.except_other.active.order_by_name
   end
 
 end
