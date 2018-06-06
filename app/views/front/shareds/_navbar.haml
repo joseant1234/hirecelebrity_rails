@@ -1,0 +1,18 @@
+%nav
+  .nav-wrapper.custom-color
+    = link_to 'Hire Celebrities', front_root_path, class: 'brand-logo'
+    %a.button-collapse{href: '#', 'data-activates': 'mobile'}
+      %i.material-icons menu
+    %ul.right.hide-on-med-and-down
+      = li_paint_tab('Celebrities', front_celebrities_path, 'celebrities')
+      = li_paint_tab('Services', front_services_path, 'services')
+      = li_paint_tab('Events', front_events_path, 'events')
+      = li_paint_tab('Clients', front_clients_path, 'clients')
+      = li_paint_tab('Contact', front_root_path, 'contacts')
+
+    %ul.side-nav#mobile
+      = li_paint_tab('Celebrities', front_celebrities_path, 'celebrities')
+      = li_paint_tab('Services', front_services_path, 'services')
+      = li_paint_tab('Events', front_events_path, 'events')
+      = li_paint_tab('Clients', front_clients_path, 'clients')
+      = li_paint_tab('Contact', front_root_path, 'contacts')

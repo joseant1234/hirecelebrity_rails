@@ -1,0 +1,5 @@
+/*
+*= require common
+*= require_tree ./front/
+*= require_self
+*/

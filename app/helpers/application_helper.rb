@@ -12,6 +12,10 @@ module ApplicationHelper
     return "$#{number_with_delimiter(object.fee_min, :delimiter => ',')} - $#{number_with_delimiter(object.fee_max, :delimiter => ',')}"
   end
 
+  def current_site
+    @current_site ||= Site.active.find_by_url(request.domain)
+  end
+  
   def class_enum_for_select class_name, enum_name
     class_name.constantize.send(enum_name.pluralize).keys.map {|k| [k.humanize, k]}
   end

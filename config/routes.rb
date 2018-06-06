@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :booking_topics, except: :destroy do
       put 'status', on: :member
     end
-    resources :booking_requests, only: %i[index show] do
+    resources :booking_requests, only: [:index, :show] do
       put 'status', on: :member
     end
     resources :sites, except: :destroy do
@@ -34,6 +34,13 @@ Rails.application.routes.draw do
         put 'status'
       end
     end
-    
+  end
+
+  namespace :front, path: '' do
+    root 'home#index'
+    resources :celebrities, only: [:index, :show]
+    resources :events, only: [:index]
+    resources :services, only: [:index]
+    resources :clients, only: [:index]
   end
 end

@@ -1,0 +1,29 @@
+.custom-color {
+  background-color: #5900d0;
+}
+
+.custom-color-text {
+  color: #5900d0 !important;
+}
+
+#banner_slider{
+  height: 60vh !important
+}
+
+.indicators{
+  z-index: 3;
+}
+
+#banner_slider{
+  h3{
+    position: absolute;
+    top: 50%;
+    left: 30px;
+  }
+  h5{
+    position: absolute;
+    top: 70%;
+    left: 30px;
+  }
+
+}

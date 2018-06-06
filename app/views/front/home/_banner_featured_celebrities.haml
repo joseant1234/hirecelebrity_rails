@@ -1,0 +1,7 @@
+.slider
+  %ul.slides#banner_slider
+    - @banner_photos.each do |banner_photo|
+      %li.relative
+        %div.full-height{style: "background: url(#{banner_photo.portrait}); background-repeat: no-repeat; background-position: center; background-size: cover;"}
+        %h3.white-text.no-margin= banner_photo.title
+        %h5.light.grey-text.text-lighten-3.no-margin= banner_photo.subtitle
