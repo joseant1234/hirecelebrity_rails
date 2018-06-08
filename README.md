@@ -24,3 +24,10 @@ This project covers:
 
 
 * ...
+
+
+Instructions with Sidekiq:
+
+* Run redis: redis-server
+
+* Run sidekiq: bundle exec sidekiq -q mailers -q default
