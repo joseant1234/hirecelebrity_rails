@@ -1,0 +1,13 @@
+.row.top-space
+  .col.s12.center
+    %span.bold.medium.custom-purple-text WHO WE ARE
+.row
+  .col.s12.center-align
+    %span= current_site.who_we_are
+.row
+  - @who_we_are_photos.each do |who_we_are_photo|
+    .col.s12.m4
+      .card
+        .card-image
+          = image_tag who_we_are_photo.portrait
+          %span.card-title= who_we_are_photo.title

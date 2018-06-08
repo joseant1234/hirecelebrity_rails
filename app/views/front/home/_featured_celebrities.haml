@@ -1,5 +1,10 @@
-.card
-  .slider
-    %ul.slides
-      - @featured_celebrities.in_groups_of(2,false).each do |group|
-        %li= render partial: 'celebrity', collection: group, as: :featured_celebrity
+.row.top-space
+  .col.s12.center-align
+    %span.bold.medium FEATURED CELEBRITIES
+.row.top-space
+  - @featured_celebrities.each do |featured_celebrity|
+    .col.s12.m4
+      .card
+        .card-image
+          = image_tag featured_celebrity.portrait
+          %span.card-title= featured_celebrity.display_full_name

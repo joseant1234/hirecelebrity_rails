@@ -5,6 +5,12 @@
 
 = render 'who_we_are'
 
+.divider
+
 = render 'featured_celebrities'
+
+.separator.center
+  %div
+    = link_to 'View all celebrities', front_celebrities_path, class: 'btn red btn-large'
 
 = render 'steps'
