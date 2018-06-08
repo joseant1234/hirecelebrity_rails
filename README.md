@@ -16,7 +16,7 @@ This project covers:
 
 * DECORATORS (Ready)
 
-* Cors
+* Crons
 
 * Sitemap with multiple domains
 

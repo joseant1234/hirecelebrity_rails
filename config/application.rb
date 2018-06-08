@@ -23,5 +23,7 @@ module Hirecelebrity
         html_tag.insert html_tag.index('>'), ' class="validation--failed invalid"'
       end
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

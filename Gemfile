@@ -46,7 +46,9 @@ gem 'materialize-sass', '~> 0.100.2'
 gem "nested_form"
 gem 'pg', '0.21.0'
 gem "paperclip", "~> 6.0.0"
+gem 'redis', '~> 4.0'
 gem "seedbank"
+gem 'sidekiq'
 gem 'validate_url'
 gem 'validates_email_format_of'
 gem 'wikipedia-client'
